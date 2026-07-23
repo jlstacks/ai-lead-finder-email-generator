@@ -1,0 +1,64 @@
+{
+  "project": "AI Lead Finder Email Generator",
+  "generatedOn": "2026-07-22",
+  "source": "Verified local application at http://127.0.0.1:8765/",
+  "repository": "https://github.com/jlstacks/ai-lead-finder-email-generator",
+  "validation": {
+    "javascriptSyntax": "passed",
+    "targetedBrowserChecks": 11,
+    "browserConsoleErrors": 0,
+    "desktopWidth": 1425,
+    "mobileWidth": 375,
+    "notes": "Static frontend with no backend test suite. Screenshots were captured from the working local application using privacy-safe sample data."
+  },
+  "images": [
+    {
+      "file": "images/01-overview-desktop.png",
+      "width": 1425,
+      "height": 1153,
+      "role": "primary hero",
+      "caption": "A focused two-column workspace turns lead research and offer details into a live sales-email draft without requiring an account or API key.",
+      "alt": "Desktop view of the AI Lead Finder Email Generator with an empty lead and sender form on the left and a generated starter email on the right in a dark blue interface."
+    },
+    {
+      "file": "images/02-complete-email-desktop.png",
+      "width": 1425,
+      "height": 1153,
+      "role": "complete email workspace",
+      "caption": "A completed example keeps lead context, positioning, proof, controls, and the resulting personalized email visible in one workspace.",
+      "alt": "Desktop email-generation workspace filled with privacy-safe sample data for Northstar Advisory, showing a personalized cold email beside the completed lead and sender fields."
+    },
+    {
+      "file": "images/03-follow-up-desktop.png",
+      "width": 1425,
+      "height": 1153,
+      "role": "message variation",
+      "caption": "Message type, tone, subject, and CTA controls reshape the same research into a concise follow-up without re-entering lead details.",
+      "alt": "Desktop workspace showing Short follow-up and Direct selected, a custom follow-up subject, a one-page-overview CTA, and the updated email for Morgan at Northstar Advisory."
+    },
+    {
+      "file": "images/04-copy-confirmation-desktop.png",
+      "width": 1425,
+      "height": 1153,
+      "role": "clipboard interaction",
+      "caption": "The very-short-note pattern produces compact outreach, while inline status confirms that the finished message reached the clipboard.",
+      "alt": "Desktop workspace set to Very short note and Friendly, with a compact generated email and a green Copied to clipboard confirmation beside the Copy email button."
+    },
+    {
+      "file": "images/05-overview-mobile.png",
+      "width": 375,
+      "height": 812,
+      "role": "responsive lead entry",
+      "caption": "The responsive layout turns the desktop form into a readable, touch-friendly single-column flow.",
+      "alt": "Mobile view of the Email Generator showing the heading and stacked lead-detail fields for business type, business name, location, contact, and notes."
+    },
+    {
+      "file": "images/06-generated-email-mobile.png",
+      "width": 375,
+      "height": 812,
+      "role": "responsive generated email",
+      "caption": "On mobile, composition controls and the generated message remain readable and editable within the same continuous workflow.",
+      "alt": "Mobile view of the completed Email Generator showing a personalized opening hook, CTA selector, generated Northstar Advisory email, and Copy email button."
+    }
+  ]
+}

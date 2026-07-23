@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Lead Finder - Email Generator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="container">
+    <header class="page-header">
+      <p class="eyebrow">AI Lead Finder companion</p>
+      <h1>Email Generator</h1>
+      <p>Turn lead-finder output into a personalized, ready-to-send sales email.</p>
+    </header>
+
+    <div class="grid">
+      <section class="card" aria-labelledby="lead-heading">
+        <div class="card-heading">
+          <div>
+            <h2 id="lead-heading">Lead &amp; sender details</h2>
+            <p>Paste the matching fields from your AI Lead Finder.</p>
+          </div>
+          <button type="button" class="button button-secondary" id="clearButton">Clear</button>
+        </div>
+
+        <h3>Lead details</h3>
+        <label for="businessType">Business type</label>
+        <input id="businessType" placeholder="e.g., Boutique hotels">
+
+        <div class="row">
+          <div>
+            <label for="businessName">Business name</label>
+            <input id="businessName" placeholder="e.g., The Grand Hotel">
+          </div>
+          <div>
+            <label for="leadCity">City, state</label>
+            <input id="leadCity" placeholder="e.g., Jacksonville, FL">
+          </div>
+        </div>
+
+        <label for="leadCountry">Country</label>
+        <input id="leadCountry" placeholder="e.g., United States">
+
+        <label for="contactName">Contact name</label>
+        <input id="contactName" placeholder="e.g., Jane Doe">
+
+        <label for="leadNotes">Lead notes / likely pain</label>
+        <textarea id="leadNotes" rows="3" placeholder="Add useful research, a trigger event, or a likely business challenge."></textarea>
+
+        <hr>
+        <h3>Your offer</h3>
+        <div class="row">
+          <div>
+            <label for="yourName">Your name</label>
+            <input id="yourName" placeholder="e.g., Alex Morgan">
+          </div>
+          <div>
+            <label for="yourCompany">Company / brand</label>
+            <input id="yourCompany" placeholder="e.g., Acme Consulting">
+          </div>
+        </div>
+
+        <label for="yourRole">Your role</label>
+        <input id="yourRole" placeholder="e.g., strategic sales consultant">
+
+        <label for="solutionType">Solution / outcome you deliver</label>
+        <input id="solutionType" placeholder="e.g., AI-assisted lead research with verified decision-makers">
+
+        <label for="keyBenefit">Primary benefit</label>
+        <input id="keyBenefit" placeholder="e.g., more qualified conversations without adding headcount">
+
+        <label for="proofPoint">Proof point</label>
+        <input id="proofPoint" placeholder="e.g., increased qualified pipeline by 32% in one quarter">
+      </section>
+
+      <section class="card output-card" aria-labelledby="output-heading">
+        <div class="card-heading">
+          <div>
+            <h2 id="output-heading">Email controls &amp; output</h2>
+            <p>The message updates automatically as you type.</p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div>
+            <label for="emailType">Email type</label>
+            <select id="emailType">
+              <option value="coldIntro">Cold intro - first touch</option>
+              <option value="followUp">Short follow-up</option>
+              <option value="hyperShort">Very short note</option>
+            </select>
+          </div>
+          <div>
+            <label for="tone">Tone</label>
+            <select id="tone">
+              <option value="consultative">Consultative</option>
+              <option value="direct">Direct</option>
+              <option value="casual">Friendly</option>
+            </select>
+          </div>
+        </div>
+
+        <label for="subjectOverride">Subject line override</label>
+        <input id="subjectOverride" placeholder="Leave blank to auto-generate">
+
+        <label for="openingHook">Opening hook</label>
+        <textarea id="openingHook" rows="3" placeholder="Optional personalized observation or reason for reaching out."></textarea>
+
+        <label for="cta">Call to action</label>
+        <select id="cta">
+          <option>Would you be open to a brief intro call next week to see if this is worth exploring?</option>
+          <option>Would it be crazy to look at a 15-20 minute walkthrough of how this could work for your team?</option>
+          <option>If you're not the right person, who on your team owns this area that I might speak with?</option>
+          <option>If you'd like, I can send a short one-page overview tailored to your business.</option>
+        </select>
+
+        <label for="emailOutput">Generated email</label>
+        <textarea id="emailOutput" class="email-output" readonly></textarea>
+
+        <div class="actions">
+          <button type="button" class="button button-primary" id="copyButton">Copy email</button>
+          <span class="status" id="copyStatus" role="status" aria-live="polite"></span>
+        </div>
+      </section>
+    </div>
+  </main>
+  <script src="app.js?v=1"></script>
+</body>
+</html>
