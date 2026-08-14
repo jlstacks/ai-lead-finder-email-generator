@@ -1,0 +1,24 @@
+name: Static app checks
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "37 9 * * 1"
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+      - name: Validate JavaScript syntax
+        run: node --check app.js
+      - name: Validate portfolio manifest JSON
+        run: node -e "JSON.parse(require('node:fs').readFileSync('portfolio-assets/manifest.json', 'utf8'))"
+      - name: Verify required application files
+        run: test -s index.html && test -s styles.css && test -s app.js
