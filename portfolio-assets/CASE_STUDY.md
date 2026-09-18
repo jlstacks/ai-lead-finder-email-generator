@@ -24,7 +24,7 @@ The core experience is deliberately immediate. Every change updates the email pr
 
 I treated the interface as a working composition surface rather than a conventional form. On desktop, lead and sender details sit beside a sticky output card so the draft remains visible during editing. On smaller screens, the layout becomes a single readable column with touch-friendly controls. A restrained dark visual system, subtle gradients, clear section labels, strong focus states, and a monospace output area distinguish research inputs from the message being produced.
 
-The product uses only semantic HTML, responsive CSS, and vanilla JavaScript. It has no framework, package dependencies, build step, backend, account system, cookies, analytics, advertising, or external assets. Lead information remains in the current browser tab and disappears when the page is refreshed or closed. Copying uses the browser Clipboard API when available and falls back to selecting the generated text for a manual copy command.
+The product uses only semantic HTML, responsive CSS, and vanilla JavaScript. It has no framework, package dependencies, build step, backend, account system, cookies, analytics, advertising, or external assets. The application does not transmit or persist entered lead data. Browser autofill/session restoration and clipboard retention are controlled by the browser and operating system. Copying uses the browser Clipboard API when available and falls back to selecting the generated text for a manual copy command.
 
 The project was prepared for public repository publication with neutral sample data, an MIT license, a concise privacy statement, a basic ignore file, and Git initialized on the `main` branch. Unused lead fields were removed before release so every visible control has a clear purpose in the workflow.
 
@@ -52,7 +52,7 @@ The desktop layout pairs the research form with a sticky output card. Users can 
 
 ### Generate locally and transparently
 
-The app uses deterministic browser-side templates rather than an external generation service. The relationship between inputs and output stays understandable, response time is immediate, and prospect data never needs to leave the page.
+The app uses deterministic browser-side templates rather than an external generation service. The relationship between inputs and output stays understandable, response time is immediate, and draft generation requires no transmission of prospect data to an external service.
 
 ### Support several outreach moments
 
@@ -64,7 +64,7 @@ The message builder checks each value before adding its sentence. A useful draft
 
 ### Make privacy the default behavior
 
-There is no account, storage layer, external request, tracking script, or third-party asset. The application does not need a privacy toggle because its baseline architecture keeps entered data in the active browser tab.
+There is no account, application-managed storage layer, external request, tracking script, or third-party asset. The application does not transmit or persist entered lead data. Copy email writes the generated draft to the system clipboard. Browser autofill/session restoration and clipboard retention are controlled by the browser and operating system.
 
 ### Recover gracefully when clipboard access is restricted
 
@@ -81,17 +81,17 @@ At the responsive breakpoint, the two-column workspace becomes a single column a
 - **Application logic:** Vanilla JavaScript event listeners and deterministic message-building functions
 - **Output:** Read-only textarea updated through its text value, preserving line breaks without interpreting user input as markup
 - **Clipboard:** Native Clipboard API with a select-and-copy fallback
-- **Storage:** None; all state exists only in the current document
+- **Storage:** No application-managed persistent storage; browser autofill/session restoration and system clipboard retention are outside the application’s control
 - **Delivery:** Static files that can be opened directly or hosted on any static web service
 
 ## Security and privacy work
 
 - No API keys, credentials, environment files, or secrets required
-- No backend, database, account system, cookies, or persistent browser storage
+- No backend, database, account system, cookies, or application-managed persistent browser storage
 - No external scripts, fonts, images, analytics, advertising, or tracking requests
 - User-entered content is assigned to a textarea value rather than inserted as HTML
 - No `innerHTML`, dynamic script execution, or third-party dependency surface
-- Clipboard failure is handled without exposing or transmitting the generated message
+- If clipboard access fails, the application selects the generated text for manual copying without initiating a network request; copied text is retained according to browser and operating-system behavior
 - Neutral sample data replaces personal sender defaults in the public-ready source
 - Unused data-collection fields were removed to keep the input surface intentional
 - Repository includes a privacy statement, MIT license, and minimal ignore rules
@@ -106,7 +106,7 @@ The result is a focused, documented, and repository-ready sales tool that turns 
 
 ## Compact résumé version
 
-Designed and built a privacy-conscious, dependency-free sales email generator using semantic HTML, responsive CSS, and vanilla JavaScript. Created live multi-template personalization, tone and CTA controls, subject overrides, accessible form interactions, Clipboard API fallback behavior, and a desktop-to-mobile composition workflow with no backend, tracking, or persistent data storage.
+Designed and built a privacy-conscious, dependency-free sales email generator using semantic HTML, responsive CSS, and vanilla JavaScript. Created live multi-template personalization, tone and CTA controls, subject overrides, accessible form interactions, Clipboard API fallback behavior, and a desktop-to-mobile composition workflow with no backend, tracking, or application-managed persistent data storage.
 
 ## Suggested portfolio captions and alt text
 
