@@ -1,2 +1,9 @@
 .DS_Store
 .tools/
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+cookies*.txt
+*session*.json
