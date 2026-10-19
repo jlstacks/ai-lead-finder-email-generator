@@ -10,6 +10,23 @@ No lead data is sent to an external service. The application requires no account
 
 Lead research is useful only if it can be translated efficiently into relevant outreach. This tool creates a structured handoff between prospect research and sales execution while keeping sensitive lead information local to the browser.
 
+### Persona pain points
+
+- **Account executives and business-development representatives:** Research is often scattered across notes and must be reformatted before it can support outreach.
+- **Sales managers:** Draft quality can vary when each representative translates the same positioning into a message differently.
+- **Privacy-conscious teams:** Prospect context should not be sent to another service merely to assemble a draft.
+
+### Business value and ROI boundary
+
+The application removes repetitive formatting between research and a usable first draft, makes the drafting logic inspectable, and avoids per-request API costs. The repository does not claim a measured conversion-rate or time-savings result; those outcomes require evaluation in the team's actual sales workflow.
+
+### System invariants
+
+- The application does not transmit or persist lead data; copying the generated draft is an explicit user action.
+- Draft generation is deterministic and does not call an external AI service.
+- User-entered content is displayed as text rather than injected as executable HTML.
+- The tool does not claim to discover, validate, or enrich leads.
+
 Users can combine:
 
 - Business and contact information
@@ -28,11 +45,16 @@ The resulting draft updates immediately as inputs change.
 
 ```mermaid
 flowchart LR
-    Research[User-provided lead research] --> Inputs[HTML form controls]
+    Research[Upstream lead research] -->|manual local ingestion| Inputs[HTML form controls]
     Inputs --> Logic[Deterministic JavaScript templates]
     Logic --> Preview[Live draft preview via text values]
     Preview --> Clipboard[Explicit copy to system clipboard]
     Inputs --> Reset[Reset application inputs]
+
+    Boundary{{Browser-only processing boundary}}
+    Boundary -. governs .-> Inputs
+    Boundary -. governs .-> Logic
+    Boundary -. governs .-> Preview
 ```
 
 There is no server-side pipeline or external AI call. The app formats the inputs the user provides; it does not independently find or validate leads. The browser and operating system control clipboard retention and autofill outside the application's state.
