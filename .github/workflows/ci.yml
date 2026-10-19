@@ -22,3 +22,12 @@ jobs:
         run: node -e "JSON.parse(require('node:fs').readFileSync('portfolio-assets/manifest.json', 'utf8'))"
       - name: Verify required application files
         run: test -s index.html && test -s styles.css && test -s app.js
+      - name: Build static preview container
+        run: docker build -t lead-email-preview .
+      - name: Smoke-test container assets
+        run: |
+          docker run --detach --rm --name lead-email-preview -p 127.0.0.1:8080:8080 lead-email-preview
+          trap 'docker stop lead-email-preview' EXIT
+          for asset in index.html styles.css app.js; do
+            curl --fail --retry 10 --retry-all-errors --retry-delay 1 --max-time 10 "http://127.0.0.1:8080/$asset" -o /dev/null
+          done

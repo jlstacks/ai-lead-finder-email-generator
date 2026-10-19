@@ -6,7 +6,7 @@ The tool was designed as a companion to an AI-assisted lead research workflow. R
 
 No lead data is sent to an external service. The application requires no account, API key, backend, database, or internet connection.
 
-## Why it exists
+## Business Problem Solved
 
 Lead research is useful only if it can be translated efficiently into relevant outreach. This tool creates a structured handoff between prospect research and sales execution while keeping sensitive lead information local to the browser.
 
@@ -23,6 +23,19 @@ Users can combine:
 - Call to action
 
 The resulting draft updates immediately as inputs change.
+
+## Architecture
+
+```mermaid
+flowchart LR
+    Research[User-provided lead research] --> Inputs[HTML form controls]
+    Inputs --> Logic[Deterministic JavaScript templates]
+    Logic --> Preview[Live draft preview via text values]
+    Preview --> Clipboard[Explicit copy to system clipboard]
+    Inputs --> Reset[Reset application inputs]
+```
+
+There is no server-side pipeline or external AI call. The app formats the inputs the user provides; it does not independently find or validate leads. The browser and operating system control clipboard retention and autofill outside the application's state.
 
 ## Product decisions
 
@@ -74,6 +87,17 @@ index.html
 in a modern browser.
 
 No installation, build process, server, account, or internet connection is required.
+
+### Optional Docker preview
+
+If you prefer an HTTP preview, run from the cloned repository root:
+
+```bash
+docker build -t lead-email-preview .
+docker run --rm -p 127.0.0.1:8080:8080 lead-email-preview
+```
+
+Open `http://localhost:8080`. The image contains only the three application assets, not local environment files or research notes. The container serves static files; draft generation still runs in the browser. An internet connection is needed for the initial image download.
 
 ## Privacy and security
 
